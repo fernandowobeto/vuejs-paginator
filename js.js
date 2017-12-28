@@ -1,7 +1,7 @@
 new Vue({
   el: 'body',
   data: {
-    resource: people_collection,
+    resource: people_collection(50),
     people: []
   },
   events: {

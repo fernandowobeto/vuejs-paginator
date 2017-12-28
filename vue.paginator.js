@@ -21,7 +21,7 @@ Vue.component('vue-paginator', {
       total_records: 0
     }
   },
-  template: '<div class="pagination" v-if="pages.length > 1"><ul><li v-for="page in pages" track-by="$index" :class="{\'active\': isActive(page)}"><a href="#" @click="goPage(page)">{{page}}</a></li></ul></div>',
+  template: '<div class="pagination" v-if="pages.length > 1"><ul><li v-for="page in pages" track-by="$index" :class="classIfActive(page)"><a href="#" @click="goPage(page)">{{page}}</a></li></ul></div>',
   methods: {
     goPage: function(page) {
       if (_.isNumber(page)) {
@@ -32,8 +32,8 @@ Vue.component('vue-paginator', {
 
       this.$dispatch('updateRecords', this.records.slice(inicial, final));
     },
-    isActive: function(page) {
-      return page == this.active;
+    classIfActive: function(page) {
+      return page == this.active ? 'active': '';
     },
     refresh: function(){
       this.total_records = this.records.length;
